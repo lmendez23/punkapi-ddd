@@ -17,8 +17,7 @@ This project builds a simple API Rest to get a list of beers that match with a f
 - [ ] Functional tests with Behat.
 
 ## Pending Tasks
-- [ ] PunkAPI review and analysis.
-- [ ] Add php-cs-fixer, PHPUnit and Guzzle dependencies.
+- [ ] Folder structure.
 - [ ] Add Beer model.
 - [ ] Add PunkAPI client.
 - [ ] Add repository interface.
@@ -31,3 +30,5 @@ This project builds a simple API Rest to get a list of beers that match with a f
 
 ## Tasks completed
 - [X] Project initialization with Symfony 6.4.
+- [X] PunkAPI review and analysis.
+- [X] Add php-cs-fixer, PHPUnit and Guzzle dependencies.
