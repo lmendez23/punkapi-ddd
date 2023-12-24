@@ -1,3 +1,13 @@
 beer_controllers:
     resource: ../src/Beer/Infrastructure/Symfony/Controller/
     type: annotation
+
+beers_by_food:
+    path: /api/beers
+    controller: App\Beer\Infrastructure\Symfony\Controller\BeerByFoodController
+    methods: GET
+
+beer_by_id:
+    path: /api/beers/{id}
+    controller: App\Beer\Infrastructure\Symfony\Controller\BeerByIdController
+    methods: GET
