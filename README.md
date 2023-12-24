@@ -17,8 +17,8 @@ This project builds a simple API Rest to get a list of beers that match with a f
 - [ ] Functional tests with Behat.
 
 ## Pending Tasks
-- [ ] Add application service and unit test to search a beer by a string (the field to filter will be "food").
-- [ ] Add application service and unit test to get details of a specific beer by ID.
+- [ ] Add unit test to search a beer by a string (the field to filter will be "food").
+- [ ] Add unit test to get details of a specific beer by ID.
 - [ ] Cache PunkAPI requests temporarily using FileSystem or Redis.
 - [ ] Build API documentation with OpenAPI.
 - [ ] Create functional tests with Behat.
@@ -32,3 +32,5 @@ This project builds a simple API Rest to get a list of beers that match with a f
 - [X] Add repository interface.
 - [X] Add PunkAPI client.
 - [X] Add repository implementation and unit test.
+- [X] Add application service to search a beer by a string (the field to filter will be "food").
+- [X] Add application service to get details of a specific beer by ID.
