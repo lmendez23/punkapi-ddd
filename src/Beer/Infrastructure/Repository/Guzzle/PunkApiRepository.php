@@ -32,12 +32,13 @@ class PunkApiRepository implements BeerRepository
         return http_build_query($params);
     }
 
-    private function makeCall(string $uri): ResponseInterface
+    private function makeCall(string $uri): ?array
     {
         try {
-            return $this->client->request('GET', $uri);
+            $response = $this->client->request('GET', $uri);
+            return json_decode($response->getBody()->getContents(), false, 512, JSON_THROW_ON_ERROR);
         } catch (Exception | GuzzleException $e) {
-            throw new RuntimeException($e->getMessage());
+            return null;
         }
     }
 
@@ -65,9 +66,7 @@ class PunkApiRepository implements BeerRepository
     {
         $response = $this->makeCall(static::BASE_URI . 'beers?' . $this->queryParams($food, $page, $perPage));
 
-        return $this->toArrayOfBeers(
-            json_decode($response->getBody()->getContents(), false, 512, JSON_THROW_ON_ERROR)
-        );
+        return $this->toArrayOfBeers($response);
     }
 
     /**
@@ -77,8 +76,6 @@ class PunkApiRepository implements BeerRepository
     {
         $response = $this->makeCall(static::BASE_URI . 'beers/' . $id);
 
-        return $this->toBeer(
-            json_decode($response->getBody()->getContents(), false, 512, JSON_THROW_ON_ERROR)[0]
-        );
+        return $response ? $this->toBeer($response[0]) : null;
     }
 }

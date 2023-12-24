@@ -2,27 +2,21 @@
 
 namespace App\Beer\Infrastructure\Symfony\Controller;
 
+use App\Beer\Application\BeersByFood;
 use App\Beer\Infrastructure\Repository\Guzzle\PunkApiRepository;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class BeerByFoodController extends AbstractController
 {
-    protected PunkApiRepository $repository;
-
-    public function __construct()
+    /**
+     * @throws Exception
+     */
+    public function __invoke(Request $request, BeersByFood $beersByFood): JsonResponse
     {
-        $this->repository = new PunkApiRepository();
-    }
-
-    public function __invoke(Request $request): JsonResponse
-    {
-        $beers = $this->repository->findByFood(
-            $request->query->get('food'),
-            $request->query->get('page'),
-            $request->query->get('per_page')
-        );
+        $beers = $beersByFood($request);
 
         return $this->json([
             'beers' => $beers
