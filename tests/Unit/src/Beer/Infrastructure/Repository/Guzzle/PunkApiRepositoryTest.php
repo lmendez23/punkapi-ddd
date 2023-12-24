@@ -55,8 +55,8 @@ class PunkApiRepositoryTest extends TestCase
 
     public function test_should_return_null_if_id_not_found(): void
     {
-        $this->expectException(\Exception::class);
-        $this->repository->findById(0);
+        $beer = $this->repository->findById(0);
+        $this->assertNull($beer);
     }
 }
 

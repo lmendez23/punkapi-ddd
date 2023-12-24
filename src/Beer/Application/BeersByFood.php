@@ -2,14 +2,13 @@
 
 namespace App\Beer\Application;
 
-use App\Beer\Domain\Model\Beer;
-use App\Beer\Infrastructure\Repository\Guzzle\PunkApiRepository;
+use App\Beer\Infrastructure\Repository\BeerRepository;
 use Symfony\Component\HttpFoundation\Request;
 
 class BeersByFood
 {
-    public PunkApiRepository $repository;
-    public function __construct(PunkApiRepository $repository)
+    public $repository;
+    public function __construct(BeerRepository $repository)
     {
         $this->repository = $repository;
     }
